@@ -4,9 +4,10 @@ from . import views
 
 app_name = 'tasks'
 urlpatterns = [
-    url(r'^$', views.AllProjectsView.as_view(), name='all_projects'),
-    url(r'^(?P<pk>[0-9]+)/$', views.ProjectView.as_view(), name='detail'),
-    url(r'^(?P<pk>[0-9]+)/results/$', views.ResultsView.as_view(), name='results'),
-    #url(r'^accounts/profile/$', views.ProfileView.as_view(), name='profile'),
-    # url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    url(r'^$', views.AllProjects.as_view(), name='all_projects'),
+    url(r'^project/(?P<pk>[0-9]+)/$', views.DetailProject.as_view(), name='detail_project'),
+    url(r'^project/(?P<pk>[0-9]+)/edit/$', views.UpdateProject.as_view(), name='edit_project'),
+    url(r'^project/create/$', views.CreateProject.as_view(), name='create_project'),
+    url(r'^project/(?P<pk>[0-9]+)/delete/$', views.DeleteProject.as_view(), name='delete_project'),
+
 ]

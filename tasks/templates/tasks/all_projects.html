@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% if have_permissions %}
+             <a href="{% url 'tasks:create_project' %}">Create new project</a>
+    {% endif %}
     {%  if projects_list %}
         <h1>All projects:</h1>
         <ul>
             {% for project in projects_list %}
-                <li><a href={% url 'tasks:detail' project.id %}>{{ project.title }}</a></li>
+                <li><a href={% url 'tasks:detail_project' project.id %}>{{ project.title }}</a></li>
             {% endfor %}
         </ul>
     {% else %}

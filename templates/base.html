@@ -32,14 +32,13 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            {% if user.is_authenticated %}#}
-                <li><a href="{% url 'account_logout' %}">Sign out</a></li>#}
-            {% else %}#}
-                <li><a href="{% url 'account_login' %}">Sign in</a></li>#}
-            {% endif %}#}
+            <li class="active"><a href="{% url 'tasks:all_projects' %}">Projects</a></li>
+            <li><a href="#about">Users</a></li>
+{#            {% if user.is_authenticated %}#}
+{#                <li><a href="{% url 'account_logout' %}">Sign out</a></li>#}
+{#            {% else %}#}
+{#                <li><a href="{% url 'account_login' %}">Sign in</a></li>#}
+{#            {% endif %}#}
           </ul>
         </div>
       </div>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Project: </h1>
+
+    <h3>{{ project.title }}</h3>
+    <p>Description: {{ project.description }}</p>
+    <p>Creation date: {{ project.creation_date }}</p>
+    Team:
+    <ul>
+        {% for user in project.employees.all %}
+            <li><a href="" > {{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% if have_permissions %}
+        <a href="{% url 'tasks:edit_project' project.id %}">Edit project</a>
+    {% endif %}
+
+
+    <h2>Tasks of project: </h2>
+    <ul>
+        {% for task in tasks %}
+            <li><a href="" > {{ task.id }}) {{ task.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
