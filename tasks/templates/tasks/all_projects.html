@@ -8,7 +8,7 @@
         <h1>All projects:</h1>
         <ul>
             {% for project in projects_list %}
-                <li><a href={% url 'tasks:detail_project' project.id %}>{{ project.title }}</a></li>
+                <li><a href={% url 'tasks:detail_project' project.pk %}>{{ project.title }}</a></li>
             {% endfor %}
         </ul>
     {% else %}

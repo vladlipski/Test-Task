@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Task: </h1>
+
+    <h3>{{ task.title }}</h3>
+
+    <p>Project: <a href="{% url "tasks:detail_project" task.project.pk %}">{{ task.project.title }}</a></p>
+    <p>Description: {{ task.description }}</p>
+    <p>Due date: {{ task.due_date }}</p>
+    <p>Performer: <a href="#">{{ task.performer }}</a></p>
+
+{#    {% if edit_task_permission %}#}
+{#        <a href="{% url 'tasks:edit_task' task.project.pk task.pk %}">Edit task</a>#}
+{#    {% endif %}#}
+
+{% endblock content %}

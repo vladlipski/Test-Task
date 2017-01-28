@@ -69,6 +69,7 @@ class DeleteProject(HasPermissionsMixin, generic.DeleteView):
     def get_success_url(self):
         return reverse("tasks:all_projects")
 
+
 class CreateTask(HasPermissionsMixin, generic.CreateView):
     model = Task
     template_name = 'tasks/creation_form.html'
@@ -87,3 +88,13 @@ class CreateTask(HasPermissionsMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse("tasks:edit_project", kwargs={'pk': self.kwargs['project_pk']})
+
+
+class DetailTask(generic.DetailView):
+    model = Task
+    template_name = 'tasks/task.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailTask, self).get_context_data(**kwargs)
+        context['edit_task_permission'] = has_permission(self.request.user, 'edit_task')
+        return context

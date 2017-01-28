@@ -6,7 +6,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
-        <a href="{% url "tasks:delete_project" project.id%}">Delete project</a>
+        <a href="{% url "tasks:delete_project" project.pk%}">Delete project</a>
     </form>
 
     <h2>Tasks of project: </h2>
@@ -17,7 +17,7 @@
     <br>
     <ul>
         {% for task in tasks %}
-            <li><a href="" > {{ task.title }}</a></li>
+            <li><a href="{% url 'tasks:detail_task' project.pk task.pk %}" > {{ task.title }}</a></li>
         {% endfor %}
     </ul>
 {% endblock content %}
