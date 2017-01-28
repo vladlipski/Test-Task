@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if have_permissions %}
+    {% if create_project_permission %}
              <a href="{% url 'tasks:create_project' %}">Create new project</a>
     {% endif %}
     {%  if projects_list %}

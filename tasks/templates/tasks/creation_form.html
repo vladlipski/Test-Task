@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Create new project</h1>
+    <h1>Create new {{ object_name }}</h1>
     <form method="POST" class="post-form">
         {% csrf_token %}
         {{ form.as_p }}

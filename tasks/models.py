@@ -29,3 +29,10 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class TaskForm(forms.ModelForm):
+
+    class Meta(object):
+        model = Task
+        exclude = ('project',)

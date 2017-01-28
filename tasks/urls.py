@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^project/create/$', views.CreateProject.as_view(), name='create_project'),
     url(r'^project/(?P<pk>[0-9]+)/delete/$', views.DeleteProject.as_view(), name='delete_project'),
 
+    url(r'^project/(?P<project_pk>[0-9]+)/task/create/$', views.CreateTask.as_view(), name='create_task'),
 ]
