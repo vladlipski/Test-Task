@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rolepermissions',
+    'rest_framework',
     'tasks',
 ]
 
@@ -127,3 +128,20 @@ STATICFILES_DIRS = [
 ]
 
 ROLEPERMISSIONS_MODULE = 'task_manager.roles'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser',
+    ),
+    # 'DEFAULT_PAGINATION_CLASS': None,
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.JSONRenderer',
+    #     'tasks.renderers.ListResultedTemplateHTMLRenderer'
+    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'PAGE_SIZE': 10
+}

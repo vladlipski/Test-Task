@@ -21,7 +21,7 @@ class ProjectForm(forms.ModelForm):
 
 
 class Task(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, related_name='tasks', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(default='')
     due_date = models.DateField('due date')

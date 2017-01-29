@@ -7,7 +7,7 @@ from .models import Project, ProjectForm, Task, TaskForm
 
 
 class AllProjects(generic.ListView):
-    template_name = 'tasks/all_projects.html'
+    template_name = 'tasks/project-list.html'
     context_object_name = 'projects_list'
 
     def get_context_data(self, **kwargs):
@@ -36,7 +36,7 @@ class CreateProject(HasPermissionsMixin, generic.CreateView):
 
 class DetailProject(generic.DetailView):
     model = Project
-    template_name = 'tasks/project.html'
+    template_name = 'tasks/project-detail.html'
 
     def get_context_data(self, **kwargs):
         context = super(DetailProject, self).get_context_data(**kwargs)
@@ -47,7 +47,7 @@ class DetailProject(generic.DetailView):
 
 class UpdateProject(HasPermissionsMixin, generic.UpdateView):
     model = Project
-    template_name = 'tasks/edit_project.html'
+    template_name = 'tasks/project-update.html'
     form_class = ProjectForm
     required_permission = 'edit_project'
 
