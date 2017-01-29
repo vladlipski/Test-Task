@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db import models
 from django import forms
 
@@ -36,3 +36,5 @@ class TaskForm(forms.ModelForm):
     class Meta(object):
         model = Task
         exclude = ('project',)
+
+        from django.contrib.auth.models import Group

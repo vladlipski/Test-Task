@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from rest_framework import fields
 
@@ -10,7 +10,6 @@ class UserListSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username',)
 
-
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         style={'input_type': 'password'}
@@ -18,13 +17,21 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'groups')
+        fields = ('username', 'email', 'password', 'first_name', 'last_name', 'password')
+
+
+class RetrieveUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'first_name', 'last_name')
 
 
 class CreateTaskSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Task
-        fields = ('project', 'title', 'description', 'due_date', 'performer')
+        fields = ('title', 'description', 'due_date', 'performer')
 
 
 class TasksListSerializer(serializers.ModelSerializer):
@@ -43,10 +50,10 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
 
-class CreateProjectSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Task
+        model = Project
         fields = ('title', 'description', 'creation_date', 'employees')
 
 class ProjectsListSerializer(serializers.ModelSerializer):
@@ -55,7 +62,7 @@ class ProjectsListSerializer(serializers.ModelSerializer):
         model = Project
         fields = ('id', 'title',)
 
-class ProjectSerializer(serializers.ModelSerializer):
+class RetrieveProjectSerializer(serializers.ModelSerializer):
     tasks = TasksListSerializer(many=True, read_only=True)
     employees = UserListSerializer(many=True, read_only=True)
 
