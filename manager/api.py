@@ -7,6 +7,7 @@ from .decorators import encrypt_password
 from .models import Project, Task
 from . import serializers as tasks_serializers
 
+
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     permission_classes = (DjangoModelPermissions,)
@@ -19,32 +20,10 @@ class ProjectViewSet(viewsets.ModelViewSet):
     }
 
     def get_serializer_class(self):
-        print(self.action)
         if self.action in self.serializer_classes:
             return self.serializer_classes[self.action]
         else:
             return tasks_serializers.RetrieveProjectSerializer
-
-                # template_names = {
-    #     'list': 'tasks/project-list.html',
-    #     'retrieve': 'tasks/project-detail.html',
-    # }
-
-    # def retrieve(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     serializer = self.get_serializer(instance)
-    #     return Response({'serializer': serializer, 'project': instance})
-
-    # def get_serializer_class(self):
-    #     if self.action not in self.serializer_classes:
-    #         raise ImproperlyConfigured('Wrong action passed')
-    #
-    #     return self.serializer_classes[self.action]
-
-    # def get_template_names(self):
-    #     if self.action not in self.template_names:
-    #         raise ImproperlyConfigured('Wrong action passed')
-    #     return [self.template_names[self.action]]
 
 
 class TaskViewSet(viewsets.ModelViewSet):
@@ -57,7 +36,6 @@ class TaskViewSet(viewsets.ModelViewSet):
     }
 
     def get_serializer_class(self):
-        print(self.action)
         if self.action in self.serializer_classes:
             return self.serializer_classes[self.action]
         else:

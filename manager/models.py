@@ -25,7 +25,7 @@ class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(default='')
     due_date = models.DateField('due date')
-    performer = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    performer = models.ForeignKey(User, null=True, related_name='tasks',  on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.title

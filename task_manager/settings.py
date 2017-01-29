@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tasks',
+    'django_celery_beat',
+    'manager',
 ]
 
 MIDDLEWARE = [
@@ -108,10 +109,20 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS': None,
     # 'DEFAULT_RENDERER_CLASSES': (
     #     'rest_framework.renderers.JSONRenderer',
-    #     'tasks.renderers.ListResultedTemplateHTMLRenderer'
+    #     'manager.renderers.ListResultedTemplateHTMLRenderer'
     # ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
     ),
     'PAGE_SIZE': 10
 }
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'vladislav.lipsky@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'MaILo1997'

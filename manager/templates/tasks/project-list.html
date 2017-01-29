@@ -2,13 +2,13 @@
 
 {% block content %}
 {#    {% if create_project_permission %}#}
-{#             <a href="{% url 'tasks:create_project' %}">Create new project</a>#}
+{#             <a href="{% url 'manager:create_project' %}">Create new project</a>#}
 {#    {% endif %}#}
     {%  if results %}
         <h1>All projects:</h1>
         <ul>
             {% for project in results %}
-                <li><a href={% url 'tasks:project-detail' project.id %}>{{ project.title }}</a></li>
+                <li><a href={% url 'manager:project-detail' project.id %}>{{ project.title }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
