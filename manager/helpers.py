@@ -1,4 +1,17 @@
 from django.contrib.auth.models import User, Group, Permission
+from django.test import testcases
+from rest_framework import status
+from rest_framework.test import APIClient
+
+class SetupMixin():
+
+    def set_users(self):
+        manager = Helper.create_manager()
+        developer = Helper.create_developer()
+        self.client_manager = APIClient()
+        self.client_developer = APIClient()
+        self.client_manager.force_authenticate(user=manager)
+        self.client_developer.force_authenticate(user=developer)
 
 
 class Helper():
@@ -25,21 +38,17 @@ class Helper():
         return user
 
 
-# class GenericCreateTest(testcases.TestCase):
+# class GenericCreateTest(SetupMixin, testcases.TestCase):
 #     creation_data = {}
 #     url = ''
 #
 #     def setUp(self):
-#         manager = Helper.create_manager()
-#         developer = Helper.create_developer()
-#         self.client_manager = APIClient()
-#         self.client_developer = APIClient()
-#         self.client_manager.force_authenticate(user=manager)
-#         self.client_developer.force_authenticate(user=developer)
+#         self.set_users()
 #         self.data = self.creation_data
 #
 #     def test_can_create_project(self):
-#         response_manager = self.client_manager.post(self.url, self.data)
 #         response_developer = self.client_developer.post(self.url, self.data)
-#         self.assertEqual(response_manager.status_code, status.HTTP_201_CREATED)
+#         response_manager = self.client_manager.post(self.url, self.data)
+#
+#         self.assertEqual(response_manager.data, status.HTTP_201_CREATED)
 #         self.assertEqual(response_developer.status_code, status.HTTP_403_FORBIDDEN)
