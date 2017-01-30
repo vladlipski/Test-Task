@@ -36,19 +36,4 @@ class Helper():
         group = Group.objects.create(name='developer')
         user.groups.add(group)
         return user
-
-
-# class GenericCreateTest(SetupMixin, testcases.TestCase):
-#     creation_data = {}
-#     url = ''
-#
-#     def setUp(self):
-#         self.set_users()
-#         self.data = self.creation_data
-#
-#     def test_can_create_project(self):
-#         response_developer = self.client_developer.post(self.url, self.data)
-#         response_manager = self.client_manager.post(self.url, self.data)
-#
-#         self.assertEqual(response_manager.data, status.HTTP_201_CREATED)
-#         self.assertEqual(response_developer.status_code, status.HTTP_403_FORBIDDEN)
+   
