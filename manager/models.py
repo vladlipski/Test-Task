@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User, AbstractUser
 from django.db import models
-from django import forms
 
 
 class Project(models.Model):
@@ -13,13 +12,6 @@ class Project(models.Model):
         return self.title
 
 
-class ProjectForm(forms.ModelForm):
-
-    class Meta(object):
-        model = Project
-        fields = '__all__'
-
-
 class Task(models.Model):
     project = models.ForeignKey(Project, related_name='tasks', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -29,12 +21,3 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class TaskForm(forms.ModelForm):
-
-    class Meta(object):
-        model = Task
-        exclude = ('project',)
-
-        from django.contrib.auth.models import Group

@@ -1,14 +1,15 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import serializers
-from rest_framework import fields
 
 from .models import Project, Task
+
 
 class UserListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
         fields = ('id', 'username',)
+
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
@@ -43,11 +44,9 @@ class TasksListSerializer(serializers.ModelSerializer):
 
 class TaskSerializer(serializers.ModelSerializer):
 
-
     class Meta:
         model = Task
         fields = ('id', 'title', 'description', 'due_date', 'performer')
-
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -56,11 +55,13 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = ('title', 'description', 'creation_date', 'employees')
 
+
 class ProjectsListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
         fields = ('id', 'title',)
+
 
 class RetrieveProjectSerializer(serializers.ModelSerializer):
     tasks = TasksListSerializer(many=True, read_only=True)

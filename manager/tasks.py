@@ -1,12 +1,12 @@
-from datetime import date, timedelta
-
-from celery import shared_task, app
+from datetime import date
+from celery import shared_task
+from celery.schedules import crontab
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from celery.task import periodic_task
 
 
-@periodic_task(run_every=timedelta(seconds=10))
+@periodic_task(run_every=crontab(minute=0, hour=12))
 def check_users_tasks():
 
     for user in User.objects.all():
