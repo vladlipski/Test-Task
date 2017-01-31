@@ -1,0 +1,4 @@
+Django==1.10.5
+djangorestframework==3.5.3
+celery==4.0.2
+django-celery-beat==1.0.1
